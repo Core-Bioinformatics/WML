@@ -1,19 +1,25 @@
-name: "R Markdown Websites Tutorial"
+name: "Winter School on Machine Learning"
 navbar:
-  title: "HOME"
+  title: "Program"
   left:
-    - text: "First Observations"
-      href: first_observations.html
-    - text: "Basic Workflow"
-      href: basic_workflow.html
-    - text: "Getting Sophisticated"
-      href: getting_sophisticated.html
-    - text: "Your Turn"
-      href: your_turn.html
+
+    - text: "Day 1"
+      href: day1.html
+    - text: "Day 2"
+      href: day2.html
+    - text: "Day 3"
+      href: day3.html
+    - text: "Day 4"
+      href: day4.html
+    - text: "Day 5"
+      href: day5.html
+    - text: "About us"
+      href:  about_us.html
 output_dir: "."
 output:
   html_document:
     theme: yeti
     highlight: textmate
-#    include:
-#      after_body: _footer.html
+    include:
+      after_body: _footer.html
+    css: styles.css

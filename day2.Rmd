@@ -1,12 +1,19 @@
 ---
-title: "Program"
+title: "Day 2"
 output:
   html_document:
     toc: true
+    toc_float: true 
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-Here we will provide a full program
+# Theoretical part
+
+## SVM
+
+## Probabilities
+
+# Hands-on practical

@@ -1,5 +1,5 @@
 ---
-title: "Program"
+title: "About us"
 output:
   html_document:
     toc: true
@@ -9,4 +9,5 @@ output:
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-Here we will provide a full program
+Our group is part of the Wellcome - MRC Cambridge Stem Cell Institute.
+
