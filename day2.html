@@ -387,10 +387,10 @@ div.tocify {
 <h1>Theoretical part</h1>
 <div id="svm" class="section level2">
 <h2>SVM</h2>
-</div>
-<div id="introduction" class="section level2">
-<h2>Introduction</h2>
+<div id="introduction" class="section level3">
+<h3>Introduction</h3>
 <p>Support vector machines (SVMs) are models of supervised learning, applicable to both classification and regression problems. The SVM is an extension of the support vector classifier (SVC), which is turn is an extension of the maximum margin classifier.</p>
+</div>
 <div id="maximum-margin-classifier" class="section level3">
 <h3>Maximum margin classifier</h3>
 <p>Let’s start by definining a hyperplane. In <em>p</em>-dimensional space a hyperplane is a flat affine subspace of <em>p</em>-1. Figure @ref(fig:svmSeparatingHyperplanes2) shows three separating hyperplanes and objects of two different classes. A separating hyperplane forms a natural linear decision boundary, classifying new objects according to which side of the line they are located.</p>
@@ -417,9 +417,8 @@ The two classes cannot be separated by a hyperplane and so the maximal margin cl
 </p>
 </div>
 </div>
-</div>
-<div id="support-vector-classifier" class="section level2">
-<h2>Support vector classifier</h2>
+<div id="support-vector-classifier" class="section level3">
+<h3>Support vector classifier</h3>
 <p>Even if a separating hyperplane exists, it may not be the best decision boundary. The maximal margin classifier is extremely sensitive to individual observations, so may overfit the training data.</p>
 <div class="figure" style="text-align: center">
 <img src="images/svm.9.5.png" alt="Left: two classes of observations and a maximum margin hyperplane (solid line). Right: Hyperplane (solid line) moves after the addition of a new observation (original hyperplane is dashed line). Source: http://www-bcf.usc.edu/~gareth/ISL/" width="90%" />
@@ -452,6 +451,7 @@ Left: observations on the wrong side of the margin. Right: observations on the w
 <p class="caption">
 Margin of a support vector classifier changing with tuning parameter C. Largest value of C was used in the top left panel, and smaller values in the top right, bottom left and bottom right panels. Source: <a href="http://www-bcf.usc.edu/~gareth/ISL/" class="uri">http://www-bcf.usc.edu/~gareth/ISL/</a>
 </p>
+</div>
 </div>
 </div>
 <div id="probabilities" class="section level2">

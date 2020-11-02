@@ -14,7 +14,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## SVM
 
-## Introduction
+### Introduction
 Support vector machines (SVMs) are models of supervised learning, applicable to both classification and regression problems. The SVM is an extension of the support vector classifier (SVC), which is turn is an extension of the maximum margin classifier. 
 
 ### Maximum margin classifier
@@ -39,7 +39,7 @@ The maximal margin hyperplane is a natural decision boundary, but only if a sepa
 knitr::include_graphics("images/svm.9.4.png")
 ```
 
-## Support vector classifier
+### Support vector classifier
 Even if a separating hyperplane exists, it may not be the best decision boundary. The maximal margin classifier is extremely sensitive to individual observations, so may overfit the training data.
 
 ```{r svmHyperplaneShift, echo=FALSE, out.width='90%', fig.align='center', fig.cap="Left: two classes of observations and a maximum margin hyperplane (solid line). Right: Hyperplane (solid line) moves after the addition of a new observation (original hyperplane is dashed line). Source: http://www-bcf.usc.edu/~gareth/ISL/"}
