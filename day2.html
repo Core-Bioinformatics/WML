@@ -388,6 +388,72 @@ div.tocify {
 <div id="svm" class="section level2">
 <h2>SVM</h2>
 </div>
+<div id="introduction" class="section level2">
+<h2>Introduction</h2>
+<p>Support vector machines (SVMs) are models of supervised learning, applicable to both classification and regression problems. The SVM is an extension of the support vector classifier (SVC), which is turn is an extension of the maximum margin classifier.</p>
+<div id="maximum-margin-classifier" class="section level3">
+<h3>Maximum margin classifier</h3>
+<p>Let’s start by definining a hyperplane. In <em>p</em>-dimensional space a hyperplane is a flat affine subspace of <em>p</em>-1. Figure @ref(fig:svmSeparatingHyperplanes2) shows three separating hyperplanes and objects of two different classes. A separating hyperplane forms a natural linear decision boundary, classifying new objects according to which side of the line they are located.</p>
+<div class="figure" style="text-align: center">
+<img src="images/svm.9.2.png" alt="Left: two classes of observations (blue, purple) and three separating hyperplanes. Right: separating hyperplane shown as black line and grid indicates decision rule. Source: http://www-bcf.usc.edu/~gareth/ISL/" width="90%" />
+<p class="caption">
+Left: two classes of observations (blue, purple) and three separating hyperplanes. Right: separating hyperplane shown as black line and grid indicates decision rule. Source: <a href="http://www-bcf.usc.edu/~gareth/ISL/" class="uri">http://www-bcf.usc.edu/~gareth/ISL/</a>
+</p>
+</div>
+<p>If the classes of observations can be separated by a hyperplane, then there will in fact be an infinite number of hyperplanes. So which of the possible hyperplanes do we choose to be our decision boundary?</p>
+<p>The <strong>maximal margin hyperplane</strong> is the separating hyperplane that is farthest from the training observations. The perpendicular distance from a given hyperplane to the nearest training observation is known as the <strong>margin</strong>. The maximal margin hyperplane is the separating hyperplane for which the margin is largest.</p>
+<div class="figure" style="text-align: center">
+<img src="images/svm.9.3.png" alt="Maximal margin hyperplane shown as solid line. Margin is the distance from the solid line to either of the dashed lines. The support vectors are the points on the dashed line. Source: http://www-bcf.usc.edu/~gareth/ISL/" width="75%" />
+<p class="caption">
+Maximal margin hyperplane shown as solid line. Margin is the distance from the solid line to either of the dashed lines. The support vectors are the points on the dashed line. Source: <a href="http://www-bcf.usc.edu/~gareth/ISL/" class="uri">http://www-bcf.usc.edu/~gareth/ISL/</a>
+</p>
+</div>
+<p>Figure @ref(fig:svmMaximalMarginHyperplane) shows three training observations that are equidistant from the maximal margin hyperplane and lie on the dashed lines indicating the margin. These are the <strong>support vectors</strong>. If these points were moved slightly, the maximal margin hyperplane would also move, hence the term <em>support</em>. The maximal margin hyperplane is set by the <strong>support vectors</strong> alone; it is not influenced by any other observations.</p>
+The maximal margin hyperplane is a natural decision boundary, but only if a separating hyperplane exists. In practice there may be non separable cases which prevent the use of the maximal margin classifier.
+<div class="figure" style="text-align: center">
+<img src="images/svm.9.4.png" alt="The two classes cannot be separated by a hyperplane and so the maximal margin classifier cannot be used. Source: http://www-bcf.usc.edu/~gareth/ISL/" width="75%" />
+<p class="caption">
+The two classes cannot be separated by a hyperplane and so the maximal margin classifier cannot be used. Source: <a href="http://www-bcf.usc.edu/~gareth/ISL/" class="uri">http://www-bcf.usc.edu/~gareth/ISL/</a>
+</p>
+</div>
+</div>
+</div>
+<div id="support-vector-classifier" class="section level2">
+<h2>Support vector classifier</h2>
+<p>Even if a separating hyperplane exists, it may not be the best decision boundary. The maximal margin classifier is extremely sensitive to individual observations, so may overfit the training data.</p>
+<div class="figure" style="text-align: center">
+<img src="images/svm.9.5.png" alt="Left: two classes of observations and a maximum margin hyperplane (solid line). Right: Hyperplane (solid line) moves after the addition of a new observation (original hyperplane is dashed line). Source: http://www-bcf.usc.edu/~gareth/ISL/" width="90%" />
+<p class="caption">
+Left: two classes of observations and a maximum margin hyperplane (solid line). Right: Hyperplane (solid line) moves after the addition of a new observation (original hyperplane is dashed line). Source: <a href="http://www-bcf.usc.edu/~gareth/ISL/" class="uri">http://www-bcf.usc.edu/~gareth/ISL/</a>
+</p>
+</div>
+<p>It would be better to choose a classifier based on a hyperplane that:</p>
+<ul>
+<li>is more robust to individual observations</li>
+<li>provides better classification of most of the training variables</li>
+</ul>
+<p>In other words, we might tolerate some misclassifications if the prediction of the remaining observations is more reliable. The <strong>support vector classifier</strong> does this by allowing some observations to be on the wrong side of the margin or even on the wrong side of the hyperplane. Observations on the wrong side of the hyperplane are misclassifications.</p>
+<div class="figure" style="text-align: center">
+<img src="images/svm.9.6.png" alt="Left: observations on the wrong side of the margin. Right: observations on the wrong side of the margin and observations on the wrong side of the hyperplane. Source: http://www-bcf.usc.edu/~gareth/ISL/" width="90%" />
+<p class="caption">
+Left: observations on the wrong side of the margin. Right: observations on the wrong side of the margin and observations on the wrong side of the hyperplane. Source: <a href="http://www-bcf.usc.edu/~gareth/ISL/" class="uri">http://www-bcf.usc.edu/~gareth/ISL/</a>
+</p>
+</div>
+<p>The support vector classifier has a tuning parameter, <em>C</em>, that determines the number and severity of the violations to the margin. If <em>C</em> = 0, then no violations to the margin will be tolerated, which is equivalent to the maximal margin classifier. As <em>C</em> increases, the classifier becomes more tolerant of violations to the margin, and so the margin widens.</p>
+<p>The optimal value of <em>C</em> is chosen through cross-validation.</p>
+<p><em>C</em> is described as a tuning parameter, because it controls the bias-variance trade-off:</p>
+<ul>
+<li>a small <em>C</em> results in narrow margins that are rarely violated; the model will have low bias, but high variance.</li>
+<li>as <em>C</em> increases the margins widen allowing more violations; the bias of the model will increase, but its variance will decrease.</li>
+</ul>
+<p>The <strong>support vectors</strong> are the observations that lie directly on the margin, or on the wrong side of the margin for their class. The only observations that affect the classifier are the support vectors. As <em>C</em> increases, the margin widens and the number of support vectors increases. In other words, when <em>C</em> increases more observations are involved in determining the decision boundary of the classifier.</p>
+<div class="figure" style="text-align: center">
+<img src="images/svm.9.7.png" alt="Margin of a support vector classifier changing with tuning parameter C. Largest value of C was used in the top left panel, and smaller values in the top right, bottom left and bottom right panels. Source: http://www-bcf.usc.edu/~gareth/ISL/" width="75%" />
+<p class="caption">
+Margin of a support vector classifier changing with tuning parameter C. Largest value of C was used in the top left panel, and smaller values in the top right, bottom left and bottom right panels. Source: <a href="http://www-bcf.usc.edu/~gareth/ISL/" class="uri">http://www-bcf.usc.edu/~gareth/ISL/</a>
+</p>
+</div>
+</div>
 <div id="probabilities" class="section level2">
 <h2>Probabilities</h2>
 </div>
